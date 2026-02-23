@@ -14,7 +14,7 @@ Run the fine-tuning script to train the YOLOv8 segmentation model on the car par
 python finetune.py
 ```
 * **What it does:** Loads the base `yolov8n-seg.pt` model and trains it for 30 epochs. 
-* **Output:** A customized weights file (typically saved in `runs/segment/train/weights/best.pt`) that will be used for indexing and retrieval. *Note: Ensure the path to `best.pt` in `save.py` and `retrieval.py` matches your local output path.*
+* **Output:** A customized weights file (typically saved in `runs/segment/train/weights/best.pt`) that will be used for indexing and retrieval. 
 
 ### Step 2: Download and Extract Video Frames
 Prepare the searchable video corpus.
