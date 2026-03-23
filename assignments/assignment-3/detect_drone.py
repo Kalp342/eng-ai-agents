@@ -4,8 +4,6 @@ import glob
 from ultralytics import YOLO
 
 def process_videos(video_directory='./', output_directory='detections'):
-    print("Loading custom YOLO model...")
-    # Update this path if your best.pt saved somewhere else!
     model_path = '/workspaces/eng-ai-agents/assignments/assignment-3/best.pt'
     model = YOLO(model_path) 
     
@@ -14,10 +12,6 @@ def process_videos(video_directory='./', output_directory='detections'):
     
     
     video_files = glob.glob(os.path.join(video_directory, '*.mp4'))
-    
-    if not video_files:
-        print("No .mp4 files found in the current directory.")
-        return
 
     
     for video_idx, video_path in enumerate(video_files, start=1):
@@ -32,11 +26,7 @@ def process_videos(video_directory='./', output_directory='detections'):
             success, frame = cap.read()
             if not success:
                 break 
-                
-            # Run inference (verbose=False keeps the terminal clean)
             results = model(frame, verbose=False) 
-            
-            # Check if any bounding boxes were found
             boxes = results[0].boxes
             
             if len(boxes) > 0:
